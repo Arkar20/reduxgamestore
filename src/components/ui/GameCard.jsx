@@ -19,7 +19,7 @@ const GameCard = ({ data, index }) => {
                     <CardMedia
                         component="img"
                         className={classes.imgsize}
-                        src={data.img1}
+                        src={process.env.REACT_APP_BASEURL+data.img1}
                         alt="REACT COOL IMG"
                         />
                     

@@ -63,7 +63,7 @@ console.log("effect activee")
                     </Grid>
                      <Grid item container className={classes.detailimgcontainer} justify="center">
                          <Grid item className={classes.detailimg}>
-                              { detaildata && <img src={detaildata && `/${detaildata.img1}`} alt={detaildata && detaildata.title} width="100%" height="100%"/>}
+                              { detaildata && <img src={detaildata && process.env.REACT_APP_BASEURL+`${detaildata.img1}`} alt={detaildata && detaildata.title} width="100%" height="100%"/>}
                         </Grid>
                     </Grid>
                 </Grid>
