@@ -1,4 +1,3 @@
-import Lottie from "react-lottie"
 import animationData from "../../assets/animation/loadingv2.json"
 import AnimationPlayer from "./AnimationPlayer";
 

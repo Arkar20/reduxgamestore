@@ -3,7 +3,7 @@ import {
     AppBar,
     Toolbar,
     Tabs,
-    Button,
+  
     Tab,
     useScrollTrigger,
     Slide,
@@ -84,7 +84,7 @@ const Header = ({ value, setValue, tabChange, toggleTheme, muitheme }) => {
                     setValue(1)
                 }
             }
-    },[url])
+    },[url,setValue])
     
 
    

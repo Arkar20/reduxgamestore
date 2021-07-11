@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import style from '../../style/style'
 import SearchIcon from '@material-ui/icons/Search';
 import {ListItemAvatar} from '@material-ui/core';
@@ -17,17 +17,12 @@ import {
     ListItemText,
 } from '@material-ui/core'
 const SearchList = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [searchkeyword, setSearchKeyword] = useState("")
-    const [filtereddata, setFilteredData] = useState(null)
 
   const searchlist = useSelector(state => state.searchlist)
  
   const dispatch = useDispatch()
   
-     const handleClose = () => {
-    setAnchorEl(null);
-  };
+   
 
  
     

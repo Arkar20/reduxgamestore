@@ -1,25 +1,28 @@
-import React, { useState }from 'react'
-import dummyimg from "../../assets/Trio_dummy_loading.jpg"
-import LazyLoad from 'react-lazyload';
+import React from 'react'
 import { Grid, Card, CardContent, CardMedia, Typography, CardActions, Button ,CardActionArea} from '@material-ui/core'
 import {Link} from "react-router-dom"
 import style from "../../style/style"
+import {Zoom} from "@material-ui/core"
 const GameCard = ({ data, index }) => {
-        const [gamecardloader, setGamecardloader] = useState(false)
+     
         const classes = style()
     return (
         
-        <Grid key={index} item xs={6} lg={3} md={4} xl={3}>
+        
+             <Grid  item xs={6} lg={3} md={4} xl={3} >
+            <Zoom direction="up" in={Boolean(data)} key={index}
+            {...(Boolean(data) ? { timeout: 200+100*index } : {})}
+            >
                                     <Card className={classes.cardcontent}>
                 <CardActionArea component={Link} to={`/game/${data.slug}`}>
-                    <LazyLoad height={200} offset={100}>
+                
                     <CardMedia
                         component="img"
                         className={classes.imgsize}
                         src={data.img1}
                         alt="REACT COOL IMG"
                         />
-                        </LazyLoad>
+                    
 
                     
                  
@@ -39,8 +42,11 @@ const GameCard = ({ data, index }) => {
                                                 </Button>
                                        </CardActions>
                                     </CardActionArea>
-                                    </Card>
-                                </Grid>
+                </Card>
+                    
+            </Zoom>
+            </Grid>
+                               
     )
 }
 

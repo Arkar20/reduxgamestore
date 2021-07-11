@@ -20,7 +20,7 @@ const GamePage = () => {
             axios.get('/api/games').then(res => {
                 dispatch(setRecentGames(res.data))
             })
-    },[])
+    },[dispatch,gamedata])
      const [gamecardloader, setGamecardloader] = useState(false)
     const classes = style();
     
@@ -28,7 +28,7 @@ const GamePage = () => {
             <>
                 <Grid item container direction="row" justify="space-between" alignItems="center" className={classes.tagText} >
                             <Grid item xs>
-                                    <Typography variant="h2">All Games</Typography>
+                                    <Typography variant="h2" className={classes.h2text}  paragraph>All Games</Typography>
                             </Grid>
             </Grid>
             
@@ -39,16 +39,22 @@ const GamePage = () => {
                 
                     
                     :       
-                    ( gamedata &&   gamedata.data.map((item,index) => (
-                         <GameCard
+                    (gamedata &&
+                      
+                    
+                        gamedata.data.map((item, index) => (
+                            <GameCard
                                 key={index}
                                 data={item}
                                 index={index}
-                                classes={classes}
                                 gamecardloader={gamecardloader}
-                                handlegamecard={()=>{setGamecardloader(true)}}
+                                handlegamecard={() => { setGamecardloader(true) }}
                             />
-                        )))
+                        ))
+                    
+                  
+                        
+                        )
                   }
     
                     </Grid>

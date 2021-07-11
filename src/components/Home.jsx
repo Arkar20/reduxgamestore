@@ -15,7 +15,6 @@ const Home = () => {
     const dispatch=useDispatch()
   
     const classes = style()
-    const [skeletonloader,setSkletonLoader]=useState(false)
     const [gamecardloader, setGamecardloader] = useState(false)
 
     useEffect(() => {
@@ -25,7 +24,7 @@ const Home = () => {
                         dispatch(setRecentGames(res.data))
                 })
        
-    },[])
+    },[dispatch])
     const options = {
                     drag:true,
                      type         : 'loop',
@@ -38,22 +37,21 @@ const Home = () => {
             
                     
     }
-    const handleLoading = () => {
-        setSkletonLoader(true)
-    }
+ 
     const handlegamecard = () => {
         setGamecardloader(true)
     }
+    console.log(process.env.REACT_APP_BASEURL)
     return (
-        <div >
+        <div>
          
         { Boolean(gamedata)       
                   &&  <Splide options={options} >
                             {
                               gamedata  
                                &&( gamedata.data.map(data=>(
-                            <SplideSlide key={data.id}>
-                                <img src={data.img1} alt="Image 1" className={classes.imgSlider}  />
+                                   <SplideSlide key={data.id}>
+                                       <img src={process.env.REACT_APP_BASEURL+data.img1} alt="Image 1" className={classes.imgSlider}  />
                                    </SplideSlide>)
                                     ))
         
@@ -65,7 +63,7 @@ const Home = () => {
             <Grid container direction="column" className={classes.homecontainer}>
               { Boolean(gamedata) && <Grid item container direction="row" justify="space-between" alignItems="center" className={classes.tagText} >
                             <Grid item xs>
-                                    <Typography variant="h2">Recent Games</Typography>
+                                    <Typography className={classes.h2text}  paragraph>Recent Games</Typography>
                             </Grid>
                             <Grid item>
                                     <Button variant="outlined" className={classes.btn} component={Link} to="/games" >
@@ -79,7 +77,10 @@ const Home = () => {
                                
                     {
                         Boolean(gamedata) 
-                       ? gamedata.data.map((item, index) => (
+                            ?
+                       
+                            gamedata.data.map((item, index) => (
+                          
                            <GameCard
                                key={item.id}
                                data={item}

@@ -13,7 +13,8 @@ import {
 import style from "../style/style"
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { Link } from "react-router-dom"
-import {useSelector,useDispatch} from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
 const DetailPage = ({history}) => {
     const { slug } = useParams()
     const classes= style()
@@ -26,10 +27,12 @@ const DetailPage = ({history}) => {
 
     
     useEffect(() => {
-
+console.log("effect activee")
         !searchlist && (
+            
                 axios.get('/api/searchlists').then(res => {
                     dispatch(setSearchList(res.data))
+                    console.log("search list not found and fetch from db")
                 })
         )
         if (searchlist && !searchlist.find(data => data.slug === slug))
@@ -38,21 +41,15 @@ const DetailPage = ({history}) => {
         
         searchlist &&  setDetaildata(searchlist.find(data => data.slug === slug))
         
-        // return history.push('/404')
-    //     searchlist && (
-    //    console.log(searchlist.find(data => data.slug == slug))
-            
-    //         // setDetaildata(searchlist.find(data => data.slug == slug))
-           
-    //     )
+   
        
-    }, [slug, searchlist,detaildata])
+    }, [slug, searchlist,detaildata,history,dispatch])
     const handleClick = () => {
             setOpenlink(!openlink)
         }
     const detailpage = (
          <>
-            <Grid container direction="column" justify="center" className={classes.homecontainer}>
+            <Grid container direction="column"  className={classes.homecontainer}>
                 <Grid item container  direction="column"  >
                     <Grid item container direction="row" className={classes.detailcontainer}>
                         <Grid item>
@@ -106,8 +103,10 @@ const DetailPage = ({history}) => {
     return (
         <>
             {
-                detaildata ? detailpage :
-                    <Grid container direction="column" justify="center" className={classes.homecontainer} style={{ width:'100%',height:'100vh'}}>
+                searchlist ?
+                        
+                        detailpage 
+                    :<Grid container direction="column" justify="center" className={classes.homecontainer} style={{ width:'100%',height:'100vh'}}>
                         <Loading />
                 </Grid>
             }

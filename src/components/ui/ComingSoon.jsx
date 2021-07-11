@@ -1,6 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
 import animationdata from "../../assets/animation/comingsoon.json"
+
 const ComingSoon = () => {
  const defaultOptions = {
       loop: true,
@@ -13,7 +14,7 @@ const ComingSoon = () => {
 
     return (
              <Lottie options={defaultOptions}
-            height={'100%'}
+            height={'60%'}
             width={'100%'}
         />
     )

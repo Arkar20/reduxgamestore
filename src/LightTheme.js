@@ -15,7 +15,8 @@ export default createMuiTheme({
             purple: `${gamestPurple}`,
             bgcolor: `${gamesBg}`,
             textcolor: `${textcolor}`,
-            cardbg:`${cardbg}`
+            cardbg: `${cardbg}`,
+         
         }
     },
     typography: {
@@ -41,10 +42,9 @@ export default createMuiTheme({
         },
         h3: {
             fontFamily:'Lato',
-            fontWeight: 500,
-            fontSize: "400",
-           color: `${textcolor}`,
-        },
+            fontWeight: 700,
+            fontSize: "1em",
+            color: `${textcolor}`,        },
         body1: {
             fontFamily:'Open Sans',
             fontWeight: 500,
@@ -54,13 +54,11 @@ export default createMuiTheme({
         cardbtn: {
             borderRadius:20,
             marginLeft:5,
-            color: '#aaaaab',
-
+                color: '#aaaaab',
             borderColor: `${textcolor}`,
             "&:hover": {
-                          color: `${gamesBg}`,
+                 color: `${gamestPurple}`,
                     borderColor: `${gamestPurple}`,
-                    backgroundColor:`${gamestPurple}`
                 }
             
             

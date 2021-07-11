@@ -3,7 +3,7 @@ import {fade, makeStyles } from '@material-ui/core';
 
 const style = makeStyles(theme => ({
     h2text: {
-        ...theme.typography.h2 
+        ...theme.typography.h2
     },
     h1text: {
         ...theme.typography.h1 
@@ -33,7 +33,7 @@ navcontainer:{
         height: "3em",
         color: "yellow",
         [theme.breakpoints.down('sm')]:{
-            height: "3em"
+            height: "1.7em"
         }
     },
     logocontainer: {
