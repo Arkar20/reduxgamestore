@@ -32,7 +32,7 @@ const GamePage = () => {
                             </Grid>
             </Grid>
             
-                <Grid item container direction="row" className={classes.cardcontainer} justify="space-around">
+                <Grid item container direction="row" className={classes.cardcontainer} justify="flex-start">
                    {       paginationloading
                     ?
                     [1, 2, 3, 4,5,6,7,8].map(list => <SkeletonLoader key={list}/>)
@@ -41,7 +41,7 @@ const GamePage = () => {
                     :       
                     (gamedata &&
                       
-                    
+
                         gamedata.data.map((item, index) => (
                             <GameCard
                                 key={index}

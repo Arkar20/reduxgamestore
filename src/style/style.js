@@ -258,7 +258,8 @@ navcontainer:{
     },
     footertext: {
         color:theme.palette.common.purple
-    }
+    },
+   
  }))
 
 export default style;

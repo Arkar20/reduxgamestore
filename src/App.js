@@ -42,7 +42,7 @@ const App = () => {
           <Header {...props}/>
         
         <Switch>
-            <Route path="/" exact component={Home} />
+            <Route path="/" exact render={() => <Home setValue={setValue}/>} />
             <Route path="/games" component={GamePage} />
             <Route path="/most-popular" component={MostPopular} />
               <Route path="/how-to-download" component={HowToDownload} />

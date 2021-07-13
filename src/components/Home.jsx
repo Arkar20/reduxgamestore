@@ -9,7 +9,7 @@ import {setRecentGames} from "../Redux/actions/game"
 import LoadingV2 from "./ui/LoadingV2"
 import { useSelector, useDispatch } from "react-redux";
 import {Link} from "react-router-dom"
-const Home = () => {
+const Home = ({setValue}) => {
     
     const gamedata = useSelector(state => state.games);
     const dispatch=useDispatch()
@@ -19,11 +19,11 @@ const Home = () => {
 
     useEffect(() => {
       
-                axios.get('/api/games').then(res => {
+              !gamedata && (axios.get('/api/games').then(res => {
                         
                         dispatch(setRecentGames(res.data))
                 })
-       
+              )
     },[dispatch])
     const options = {
                     drag:true,
@@ -66,14 +66,14 @@ const Home = () => {
                                     <Typography className={classes.h2text}  paragraph>Recent Games</Typography>
                             </Grid>
                             <Grid item>
-                                    <Button variant="outlined" className={classes.btn} component={Link} to="/games" >
+                                    <Button variant="outlined" className={classes.btn} component={Link} to="/games" onClick={()=>setValue(1)} >
                                         View More
                                 </Button>
                             </Grid>
 
                 </Grid>
                 }
-                <Grid item container direction="row" className={classes.cardcontainer} justify="space-around"> 
+                <Grid item container direction="row" justify="flex-start" className={classes.cardcontainer} > 
                                
                     {
                         Boolean(gamedata) 
