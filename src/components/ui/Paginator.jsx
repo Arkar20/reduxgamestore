@@ -1,9 +1,12 @@
 import React,{useState} from "react"
+import { useDispatch, useSelector } from "react-redux";
+
 import Pagination from '@material-ui/lab/Pagination';
-import axios from "axios"
-import { setRecentGames } from "../../Redux/actions/game"
-import { useSelector,useDispatch } from "react-redux";
+import { setPagenation } from "../../Redux/actions/game"
+import { useHistory } from "react-router-dom";
+
 const Paginator = ({setskeleton})=>{
+    let history = useHistory();
 
 	const gamedata = useSelector(state => state.games)
 	const dispatch=useDispatch()
@@ -12,9 +15,13 @@ const Paginator = ({setskeleton})=>{
 	const handlePageChange = async (event, value) => {
 		setskeleton(true)
 		setpageno(value)
-		const result = await axios.get(`/api/games?page=${value}`)
-		dispatch(setRecentGames(result.data))
+		dispatch(setPagenation(value))
 		setskeleton(false)
+		  history.push({
+           pathname: '/games',
+           search: '?page='+value,
+        //    state: { detail: 'some_value' }
+       });
 	};
 	
 	
@@ -25,6 +32,7 @@ const Paginator = ({setskeleton})=>{
 				color="secondary"
 				page={pagno}
 				onChange={handlePageChange}
+				
 		
 	    />
 	</>

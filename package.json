@@ -5,6 +5,7 @@
   "engines": {
     "node": "12.x"
   },
+  "proxy":"http://127.0.0.1:8000/",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -34,8 +35,8 @@
   },
   "scripts": {
     "start": "env-cmd -f .env.staging react-scripts start",
-    "build:staging": "env-cmd -f .env.staging react-scripts build",
-    "build:production": "env-cmd -f .env.production react-scripts build",
+    
+    "build": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

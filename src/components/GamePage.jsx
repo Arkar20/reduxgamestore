@@ -59,7 +59,8 @@ const GamePage = () => {
     
                     </Grid>
 
-                <Grid item container direction="row" justify='center' >
+            <Grid item container direction="row" justify='center'
+           >
                   <Grid item>
                      <Paginator setskeleton={setpaginationloading} />
                   </Grid>

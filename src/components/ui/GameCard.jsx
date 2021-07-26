@@ -1,8 +1,9 @@
-import React from 'react'
-import { Grid, Card, CardContent, CardMedia, Typography, CardActions, Button ,CardActionArea} from '@material-ui/core'
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core'
+
 import {Link} from "react-router-dom"
-import style from "../../style/style"
+import React from 'react'
 import {Zoom} from "@material-ui/core"
+import style from "../../style/style"
 const GameCard = ({ data, index }) => {
      
         const classes = style()
@@ -19,7 +20,8 @@ const GameCard = ({ data, index }) => {
                     <CardMedia
                         component="img"
                         className={classes.imgsize}
-                        src={process.env.REACT_APP_BASEURL+data.img1}
+                        // src={process.env.REACT_APP_BASEURL+data.img1}
+                        src={`${data.img1}`}
                         alt="REACT COOL IMG"
                         />
                     

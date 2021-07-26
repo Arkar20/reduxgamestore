@@ -1,19 +1,24 @@
-import React,{useEffect,useState} from 'react'
-import {useParams} from "react-router-dom"
-import axios from "axios"
-import {setSearchList} from "../Redux/actions/game"
-import Loading from "./ui/Loading"
+import {
+    Collapse,
+    Grid,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    Typography
+} from "@material-ui/core"
+import React,{useEffect, useState} from 'react'
+import { useDispatch, useSelector } from "react-redux"
+
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import {
-    Grid, Typography, IconButton,
-    List, ListItem, Collapse,
-    ListItemText
-} from "@material-ui/core"
-import style from "../style/style"
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import Loading from "./ui/Loading"
+import axios from "axios"
+import {setSearchList} from "../Redux/actions/game"
+import style from "../style/style"
+import {useParams} from "react-router-dom"
 
 const DetailPage = ({history}) => {
     const { slug } = useParams()
@@ -63,7 +68,12 @@ console.log("effect activee")
                     </Grid>
                      <Grid item container className={classes.detailimgcontainer} justify="center">
                          <Grid item className={classes.detailimg}>
-                              { detaildata && <img src={detaildata && process.env.REACT_APP_BASEURL+`${detaildata.img1}`} alt={detaildata && detaildata.title} width="100%" height="100%"/>}
+                            {detaildata &&
+                                (
+                                // <img src={detaildata && process.env.REACT_APP_BASEURL + `${detaildata.img1}`} alt={detaildata && detaildata.title} width="100%" height="100%" />
+                                <img src={ `/${detaildata.img1}`} alt={detaildata && detaildata.title} width="100%" height="100%" />
+                            )
+                            }
                         </Grid>
                     </Grid>
                 </Grid>

@@ -1,14 +1,16 @@
-import React,{useState,useEffect} from "react"
-import {Grid ,Typography,Button} from "@material-ui/core"
-import { Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import style from "../style/style"
+
+import {Button, Grid, Typography} from "@material-ui/core"
+import React,{useEffect, useState} from "react"
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { useDispatch, useSelector } from "react-redux";
+
 import GameCard from "./ui/GameCard"
-import axios from "axios"
-import {setRecentGames} from "../Redux/actions/game"
+import { Link } from "react-router-dom"
 import LoadingV2 from "./ui/LoadingV2"
-import { useSelector, useDispatch } from "react-redux";
-import {Link} from "react-router-dom"
+import {setRecentGames} from "../Redux/actions/game"
+import style from "../style/style"
+
 const Home = ({setValue}) => {
     
     const gamedata = useSelector(state => state.games);
@@ -18,13 +20,10 @@ const Home = ({setValue}) => {
     const [gamecardloader, setGamecardloader] = useState(false)
 
     useEffect(() => {
-      
-              !gamedata && (axios.get('/api/games').then(res => {
-                        
-                        dispatch(setRecentGames(res.data))
-                })
-              )
-    },[dispatch])
+                dispatch(setRecentGames())
+    }, [dispatch])
+    
+    
     const options = {
                     drag:true,
                      type         : 'loop',
@@ -41,7 +40,6 @@ const Home = ({setValue}) => {
     const handlegamecard = () => {
         setGamecardloader(true)
     }
-    console.log(process.env.REACT_APP_BASEURL)
     return (
         <div>
          
@@ -51,7 +49,8 @@ const Home = ({setValue}) => {
                               gamedata  
                                &&( gamedata.data.map(data=>(
                                    <SplideSlide key={data.id}>
-                                       <img src={process.env.REACT_APP_BASEURL+data.img1} alt="Image 1" className={classes.imgSlider}  />
+                                       {/* <img src={process.env.REACT_APP_BASEURL+data.img1} alt="Image 1" className={classes.imgSlider}  /> */}
+                                       <img src={`${data.img1}`} alt="Image 1" className={classes.imgSlider}  />
                                    </SplideSlide>)
                                     ))
         
