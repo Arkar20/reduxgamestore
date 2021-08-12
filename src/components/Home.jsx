@@ -1,7 +1,7 @@
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 import {Button, Grid, Typography} from "@material-ui/core"
-import React,{useEffect, useState} from "react"
+import React,{useEffect} from "react"
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,13 +17,12 @@ const Home = ({setValue}) => {
     const dispatch=useDispatch()
   
     const classes = style()
-    const [gamecardloader, setGamecardloader] = useState(false)
 
     useEffect(() => {
                 dispatch(setRecentGames())
     }, [dispatch])
     
-    
+    console.log(gamedata)
     const options = {
                     drag:true,
                      type         : 'loop',
@@ -37,17 +36,15 @@ const Home = ({setValue}) => {
                     
     }
  
-    const handlegamecard = () => {
-        setGamecardloader(true)
-    }
+  
     return (
         <div>
          
-        { Boolean(gamedata)       
+        { !gamedata.loading       
                   &&  <Splide options={options} >
                             {
                               gamedata  
-                               &&( gamedata.data.map(data=>(
+                               &&( gamedata.data.data.map(data=>(
                                    <SplideSlide key={data.id}>
                                        {/* <img src={process.env.REACT_APP_BASEURL+data.img1} alt="Image 1" className={classes.imgSlider}  /> */}
                                        <img src={`${data.img1}`} alt="Image 1" className={classes.imgSlider}  />
@@ -60,7 +57,7 @@ const Home = ({setValue}) => {
                 
             
             <Grid container direction="column" className={classes.homecontainer}>
-              { Boolean(gamedata) && <Grid item container direction="row" justify="space-between" alignItems="center" className={classes.tagText} >
+              {!gamedata.loading && <Grid item container direction="row" justify="space-between" alignItems="center" className={classes.tagText} >
                             <Grid item xs>
                                     <Typography className={classes.h2text}  paragraph>Recent Games</Typography>
                             </Grid>
@@ -75,19 +72,19 @@ const Home = ({setValue}) => {
                 <Grid item container direction="row" justify="flex-start" className={classes.cardcontainer} > 
                                
                     {
-                        Boolean(gamedata) 
+                       !gamedata.loading
                             ?
                        
-                            gamedata.data.map((item, index) => (
+                            gamedata.data.data.map((item, index) => (
                           
                            <GameCard
                                key={item.id}
                                data={item}
                                 index={index}
                                 classes={classes}
-                                gamecardloader={gamecardloader}
+                                gamecardloader={gamedata.data}
                                
-                                handlegamecard={handlegamecard}
+                               
                             
                             />
                        ))

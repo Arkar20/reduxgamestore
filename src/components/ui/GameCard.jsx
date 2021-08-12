@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import React from 'react'
 import {Zoom} from "@material-ui/core"
 import style from "../../style/style"
+
 const GameCard = ({ data, index }) => {
      
         const classes = style()
@@ -18,10 +19,11 @@ const GameCard = ({ data, index }) => {
                 <CardActionArea component={Link} to={`/game/${data.slug}`}>
                 
                     <CardMedia
-                        component="img"
+                      
                         className={classes.imgsize}
                         // src={process.env.REACT_APP_BASEURL+data.img1}
                         src={`${data.img1}`}
+                        layout="fill"
                         alt="REACT COOL IMG"
                         />
                     

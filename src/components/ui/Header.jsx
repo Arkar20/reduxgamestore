@@ -1,29 +1,27 @@
-import React, {  useEffect } from 'react'
 import {
     AppBar,
-    Toolbar,
-    Tabs,
-  
-    Tab,
-    useScrollTrigger,
-    Slide,
-    SwipeableDrawer,
     IconButton,
     List,
     ListItem,
     ListItemText,
+    Slide,
+    SwipeableDrawer,
     Switch,
-    
-    
+    Tab,
+    Tabs,
+    Toolbar,
+    useScrollTrigger,
 } from "@material-ui/core"
-import logo from "../../assets/logo.png"
-import PropTypes from 'prop-types';
-import { useTheme } from '@material-ui/styles';
-import { useMediaQuery } from '@material-ui/core'
+import React, { useEffect } from 'react'
+
 import { Link } from "react-router-dom"
 import MenuIcon from '@material-ui/icons/Menu';
-import style from "../../style/style"
+import PropTypes from 'prop-types';
 import SearchList from "./SearchList"
+import logo from "../../assets/logo.png"
+import style from "../../style/style"
+import { useMediaQuery } from '@material-ui/core'
+import { useTheme } from '@material-ui/styles';
 
 function HideOnScroll(props) {
   const { children } = props;
