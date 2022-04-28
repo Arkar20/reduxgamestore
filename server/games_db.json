@@ -1,0 +1,48 @@
+{
+	"games": [
+		{
+			"id": 1,
+			"title": "Uncharted",
+			"desc": "Some lorem text",
+			"image": "https://i.pinimg.com/564x/1e/6e/50/1e6e50f134b64a22f355228f2e6718ec.jpg",
+			"category": {
+				"name": "Action"
+			}
+		},
+		{
+			"id": 1,
+			"title": "Uncharted",
+			"image": "https://i.pinimg.com/564x/1e/6e/50/1e6e50f134b64a22f355228f2e6718ec.jpg",
+			"desc": "Some lorem text",
+			"category": {
+				"name": "Action"
+			}
+		},
+		{
+			"id": 2,
+			"title": "Uncharted",
+			"image": "https://i.pinimg.com/564x/1e/6e/50/1e6e50f134b64a22f355228f2e6718ec.jpg",
+			"desc": "Some lorem text",
+			"category": {
+				"name": "Action"
+			}
+		},
+		{
+			"id": 3,
+			"title": "Uncharted",
+			"desc": "Some lorem text",
+			"category": {
+				"name": "Action"
+			}
+		},
+		{
+			"id": 4,
+			"title": "Uncharted",
+			"image": "https://i.pinimg.com/564x/1e/6e/50/1e6e50f134b64a22f355228f2e6718ec.jpg",
+			"desc": "Some lorem text",
+			"category": {
+				"name": "Action"
+			}
+		}
+	]
+}
